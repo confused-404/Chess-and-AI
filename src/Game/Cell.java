@@ -1,14 +1,18 @@
 package Game;
 
+import Game.Pieces.Piece;
+
 public class Cell {
     
     private Piece piece;
     private int x;
     private int y;
+    private boolean isWhite;
 
-    public Cell(Integer x, Integer y) {
+    public Cell(Integer x, Integer y, boolean isWhite) {
         this.x = x;
         this.y = y;
+        this.isWhite = isWhite;
     }
 
     public int getX() {
@@ -38,7 +42,10 @@ public class Cell {
     @Override
     public String toString() {
         if (this.piece != null) return this.piece.getName();
-        else return ".";
+        else {
+            if (this.isWhite) return "o";
+            else return "+";
+        }
     }
 
 }
