@@ -39,9 +39,14 @@ public class Cell {
         return this.piece;
     }
 
+    public boolean hasPiece() {
+        if (this.piece != null) return true;
+        return false;
+    }
+
     @Override
     public String toString() {
-        if (this.piece != null) return this.piece.getName();
+        if (this.piece != null) return String.valueOf(this.piece.getName().charAt(0));
         else {
             if (this.isWhite) return "o";
             else return "+";

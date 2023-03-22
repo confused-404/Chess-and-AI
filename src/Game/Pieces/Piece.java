@@ -1,6 +1,9 @@
 package Game.Pieces;
 
-public class Piece {
+import Game.Board;
+import Game.Cell;
+
+public abstract class Piece {
 
     private int x;
     private int y;
@@ -16,4 +19,11 @@ public class Piece {
     public String getName() {
         return this.name;
     }
+
+    public boolean get_isWhite() {
+        return isWhite;
+    }
+
+    public abstract boolean isLegal(Board board, Cell s, Cell e);
+
 }
