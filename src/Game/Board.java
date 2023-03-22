@@ -6,7 +6,7 @@ import Game.Pieces.*;
 
 public class Board {
     
-    List<List<Cell>> board;
+    private List<List<Cell>> board;
 
     public Board() {
         board = new ArrayList<List<Cell>>();
@@ -45,6 +45,19 @@ public class Board {
             }
             System.out.println();
         }
+    }
+
+    public Cell getCell(int x, int y) {
+        return board.get(y).get(x);
+    }
+
+    public List<List<Cell>> getBoard() {
+        return this.board;
+    }
+
+    public void updateCell(Cell c) {
+        this.board.get(c.getY()).get(c.getX()).setPiece(c.getPiece());
+        System.out.println("updated board: " + this.board);
     }
 
 }
