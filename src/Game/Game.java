@@ -43,12 +43,13 @@ public class Game {
 
     public static void main(String[] args) { // game loop
         Game game = new Game();
-        List<Integer> moveList = game.getMove(game);
-        Cell s = game.board.getCell(moveList.get(0), moveList.get(1));
-        Cell e = game.board.getCell(moveList.get(2), moveList.get(3));
+        List<Integer> i = game.getMove(game);
+        Cell s = game.board.getCell(i.get(0), i.get(1));
+        Cell e = game.board.getCell(i.get(2), i.get(3));
         Move move = new Move(s, e);
         game.moves.add(move);
         game.board = move.get_newBoard(game.board);
+        game.board.printBoard();
     }
 
     

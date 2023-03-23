@@ -19,9 +19,7 @@ public class Move {
 
     public Board get_newBoard(Board b) {
         b.getBoard().get(this.s.getX()).get(this.s.getY()).setPiece(null);
-        Cell ge = b.getCell(this.e.getY(), this.e.getX());
-        ge.setPiece(origin);
-        b.updateCell(ge);
+        b.getCell(this.e.getY(), this.e.getX()).setPiece(origin);
 
         return b;
 
