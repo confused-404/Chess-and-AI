@@ -9,6 +9,7 @@ public class Game {
     private Board board;
     private List<Move> moves;
     private Scanner scanner;
+    private Player[] players;
 
     public Game() {
         board = new Board();
@@ -17,14 +18,21 @@ public class Game {
         board.populateBoard();
     }
 
-    public List<Integer> getMove() {
-        System.out.println("What move do you want to make? (format: row,column to row,column)");
+    public List<Integer> getMove(Game game) {
+        game.board.printBoard();
+        System.out.println("What move do you want to make? (format: column,row to column,row)");
         String i =  scanner.nextLine();
         i = i.replace("to", "");
-        int ox = Character.getNumericValue(i.charAt(0));
-        int oy = Character.getNumericValue(i.charAt(2));
-        int dx = Character.getNumericValue(i.charAt(5));
-        int dy = Character.getNumericValue(i.charAt(7));
+        int ox = 0; int oy = 0; int dx = 0; int dy = 0;
+        try {
+            ox = Character.getNumericValue(i.charAt(0));
+            oy = Character.getNumericValue(i.charAt(2));
+            dx = Character.getNumericValue(i.charAt(5));
+            dy = Character.getNumericValue(i.charAt(7));
+        } catch (Exception e) {
+            System.out.println("Invalid input");
+            return getMove(game);
+        }
         List<Integer> sol = new ArrayList<Integer>();
         sol.add(ox);
         sol.add(oy);
@@ -35,14 +43,12 @@ public class Game {
 
     public static void main(String[] args) { // game loop
         Game game = new Game();
-        game.board.printBoard();
-        List<Integer> moveList = game.getMove();
-        Cell s = new Cell(moveList.get(0), moveList.get(1), true);
-        Cell e = new Cell(moveList.get(2), moveList.get(3), true);
+        List<Integer> moveList = game.getMove(game);
+        Cell s = game.board.getCell(moveList.get(0), moveList.get(1));
+        Cell e = game.board.getCell(moveList.get(2), moveList.get(3));
         Move move = new Move(s, e);
         game.moves.add(move);
-        game.board = move.get_newBoard();
-        game.board.printBoard();
+        game.board = move.get_newBoard(game.board);
     }
 
     

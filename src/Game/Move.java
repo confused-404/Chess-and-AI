@@ -17,16 +17,21 @@ public class Move {
         this.dest = this.e.getPiece();
     }
 
-    public Board get_newBoard() {
-        Board b = new Board();
-        b.populateBoard();
-        b.getBoard().get(this.s.getY()).get(this.s.getX()).setPiece(null);
-        List<Cell> g = b.getBoard().get(this.e.getY());
-        Cell ge = g.get(this.e.getX());
+    public Board get_newBoard(Board b) {
+        b.getBoard().get(this.s.getX()).get(this.s.getY()).setPiece(null);
+        Cell ge = b.getCell(this.e.getY(), this.e.getX());
         ge.setPiece(origin);
         b.updateCell(ge);
 
         return b;
 
+    }
+
+    public Cell getStart() {
+        return this.s;
+    }
+
+    public Cell getEnd() {
+        return this.e;
     }
 }

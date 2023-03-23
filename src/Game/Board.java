@@ -57,7 +57,6 @@ public class Board {
 
     public void updateCell(Cell c) {
         this.board.get(c.getY()).get(c.getX()).setPiece(c.getPiece());
-        System.out.println("updated board: " + this.board);
     }
 
 }
