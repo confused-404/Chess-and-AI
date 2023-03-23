@@ -11,15 +11,36 @@ public class Pawn extends Piece {
     }
 
 	@Override
-	public boolean isLegal(Board board, Cell s, Cell e) {
-		// check if end cell is already occupied
-        if (e.hasPiece()) {
-            if (e.getPiece().get_isWhite() == s.getPiece().get_isWhite()) return false; // same color, illegal
-            // different colors, but occupied
-            // implement check and checkmate
-            return true;
+	public boolean isLegal(Cell s, Cell e) {
+		if (s.getPiece().get_isWhite()) { // origin piece is white
+            if (s.getY() == 6) { // pawn is on starting line
+                // legal moves include going forward once and twice
+                if (e.getY() - s.getY() >= -2 && s.getX() == e.getX() && !e.hasPiece()) {
+                    return true;
+                }
+            }
+            if (e.getY() - s.getY() == 1 && e.getX() == s.getX() && !e.hasPiece()) { // moving one time forward
+                return true;
+            }
+            if (e.hasPiece() && s.getY() - e.getY() == 1 && (e.getX() - s.getX() == 1 || e.getX() - s.getX() == -1)) {
+                if (!e.getPiece().get_isWhite()) return true;
+            }
+        } else { // origin piece is black
+            if (s.getY() == 1) { // pawn is on starting line
+                // legal moves include going forward once and twice
+                if (e.getY() - s.getY() <= 2 && s.getX() == e.getX() && !e.hasPiece()) {
+                    return true;
+                }
+            }
+            if (e.getY() - s.getY() == -1 && e.getX() == s.getX() && !e.hasPiece()) { // moving one time forward
+                return true;
+            }
+            if (e.hasPiece() && s.getY() - e.getY() == -1 && (e.getX() - s.getX() == 1 || e.getX() - s.getX() == -1)) {
+                if (e.getPiece().get_isWhite()) return true;
+            }
+
         }
-        return true;
+        return false;
 	}
 
 }

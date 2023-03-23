@@ -24,6 +24,6 @@ public abstract class Piece {
         return isWhite;
     }
 
-    public abstract boolean isLegal(Board board, Cell s, Cell e);
+    public abstract boolean isLegal(Cell s, Cell e);
 
 }

@@ -18,8 +18,7 @@ public class Game {
         board.populateBoard();
     }
 
-    public List<Integer> getMove(Game game) {
-        game.board.printBoard();
+    private List<Integer> getMove(Game game) {
         System.out.println("What move do you want to make? (format: column,row to column,row)");
         String i =  scanner.nextLine();
         i = i.replace("to", "");
@@ -41,15 +40,29 @@ public class Game {
         return sol;
     }
 
-    public static void main(String[] args) { // game loop
-        Game game = new Game();
+    private void loop(Game game) {
+        game.board.printBoard();
         List<Integer> i = game.getMove(game);
-        Cell s = game.board.getCell(i.get(0), i.get(1));
-        Cell e = game.board.getCell(i.get(2), i.get(3));
+        Cell s = null;
+        Cell e = null;
+        try {
+            s = game.board.getCell(i.get(0), i.get(1));
+            e = game.board.getCell(i.get(2), i.get(3));
+        } catch (Exception ex) {
+            System.out.println("Invalid input");
+            loop(game);
+        }
         Move move = new Move(s, e);
         game.moves.add(move);
-        game.board = move.get_newBoard(game.board);
-        game.board.printBoard();
+        if (move.legal()) game.board = move.get_newBoard(game.board);
+        else System.out.println("illegal move");
+    }
+
+    public static void main(String[] args) { // game loop
+        Game game = new Game();
+        while (true) {
+            game.loop(game);
+        }
     }
 
     

@@ -10,8 +10,8 @@ public class Cell {
     private boolean isWhite;
 
     public Cell(Integer x, Integer y, boolean isWhite) {
-        this.x = x;
-        this.y = y;
+        this.x = y;
+        this.y = x;
         this.isWhite = isWhite;
     }
 
