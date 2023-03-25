@@ -53,4 +53,12 @@ public class Cell {
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Cell) {
+            if (this.x == ((Cell) obj).getX() && this.y == ((Cell) obj).getY()) return true;
+        }
+        return false;
+    }
+
 }

@@ -12,6 +12,8 @@ public class Pawn extends Piece {
 
 	@Override
 	public boolean isLegal(Cell s, Cell e) {
+        if (s.equals(e)) return false;
+
 		if (s.getPiece().get_isWhite()) { // origin piece is white
             if (s.getY() == 6) { // pawn is on starting line
                 // legal moves include going forward once and twice

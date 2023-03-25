@@ -11,9 +11,14 @@ public class King extends Piece {
     }
 
 	@Override
-	public boolean isLegal(Board board, Cell s, Cell e) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'isLegal'");
+	public boolean isLegal(Cell s, Cell e) {
+		if (s.equals(e)) return false;
+
+		if (e.hasPiece()) {
+			if (e.getPiece().get_isWhite() == this.get_isWhite()) return false;
+		} 
+		if ((e.getY() - s.getY() <= 1 || e.getY() - s.getY() >= -1) && (e.getX() - s.getX() <= 1 || e.getX() - s.getX() >= -1)) return true;
+		return false;
 	}
 
 }

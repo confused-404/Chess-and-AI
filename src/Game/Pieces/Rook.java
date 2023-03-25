@@ -11,7 +11,7 @@ public class Rook extends Piece {
     }
 
 	@Override
-	public boolean isLegal(Board board, Cell s, Cell e) {
+	public boolean isLegal(Cell s, Cell e) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'isLegal'");
 	}
