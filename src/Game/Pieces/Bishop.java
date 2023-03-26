@@ -41,6 +41,9 @@ public class Bishop extends Piece {
 			}
 		}
 
+		if (e.hasPiece()) {
+			if (e.getPiece().get_isWhite() == this.get_isWhite()) return false;
+		}
 		if (dx == dy && dx > 0) return true;
 		return false;
 	}
