@@ -54,7 +54,7 @@ public class Game {
         }
         Move move = new Move(s, e);
         game.moves.add(move);
-        if (move.legal()) game.board = move.get_newBoard(game.board);
+        if (move.legal(game.board)) game.board = move.get_newBoard(game.board);
         else System.out.println("illegal move");
     }
 

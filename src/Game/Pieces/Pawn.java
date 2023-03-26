@@ -11,7 +11,8 @@ public class Pawn extends Piece {
     }
 
 	@Override
-	public boolean isLegal(Cell s, Cell e) {
+	public boolean isLegal(Board board, Cell s, Cell e) {
+        // METHOD FINISHED
         if (s.equals(e)) return false;
 
 		if (s.getPiece().get_isWhite()) { // origin piece is white
@@ -24,7 +25,7 @@ public class Pawn extends Piece {
             if (e.getY() - s.getY() == 1 && e.getX() == s.getX() && !e.hasPiece()) { // moving one time forward
                 return true;
             }
-            if (e.hasPiece() && s.getY() - e.getY() == 1 && (e.getX() - s.getX() == 1 || e.getX() - s.getX() == -1)) {
+            if (e.hasPiece() && s.getY() - e.getY() == 1 && (Math.abs(e.getX() - s.getX()) == 1)) {
                 if (!e.getPiece().get_isWhite()) return true;
             }
         } else { // origin piece is black
@@ -37,7 +38,7 @@ public class Pawn extends Piece {
             if (e.getY() - s.getY() == -1 && e.getX() == s.getX() && !e.hasPiece()) { // moving one time forward
                 return true;
             }
-            if (e.hasPiece() && s.getY() - e.getY() == -1 && (e.getX() - s.getX() == 1 || e.getX() - s.getX() == -1)) {
+            if (e.hasPiece() && s.getY() - e.getY() == -1 && (Math.abs(e.getX() - s.getX()) == 1)) {
                 if (e.getPiece().get_isWhite()) return true;
             }
 

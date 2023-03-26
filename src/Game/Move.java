@@ -25,8 +25,8 @@ public class Move {
 
     }
 
-    public boolean legal() {
-        return this.origin.isLegal(this.s, this.e);
+    public boolean legal(Board b) {
+        return this.origin.isLegal(b, this.s, this.e);
     }
 
     public Cell getStart() {
