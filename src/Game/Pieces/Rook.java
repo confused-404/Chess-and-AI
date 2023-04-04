@@ -14,6 +14,8 @@ public class Rook extends Piece {
 	public boolean isLegal(Board board, Cell s, Cell e) {
 		// METHOD FINISHED
 		if (s.equals(e)) return false; // same cell
+		if (e.getX() > 7 || e.getX() < 0 || s.getX() > 7 || s.getX() < 0) return false;
+
 		if (e.hasPiece()) {
 			if (e.getPiece().get_isWhite() == s.getPiece().get_isWhite()) return false; // friendly fire
 		}

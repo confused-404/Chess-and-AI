@@ -16,6 +16,8 @@ public class Bishop extends Piece {
 		int dx = Math.abs(e.getX() - s.getX());
 		int dy = Math.abs(e.getY() - s.getY());
 
+		if (e.getX() > 7 || e.getX() < 0 || s.getX() > 7 || s.getX() < 0) return false;
+
 		if (s.equals(e)) return false;
 		
 		if (e.getX() > s.getX()) { // dest square is to the right of source square

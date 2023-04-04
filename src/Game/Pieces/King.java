@@ -22,6 +22,8 @@ public class King extends Piece {
 		if ((e.getY() - s.getY() <= 1 || e.getY() - s.getY() >= -1) && (e.getX() - s.getX() <= 1 || e.getX() - s.getX() >= -1)) return true;
 		return false;
 		*/
+		if (e.getX() > 7 || e.getX() < 0 || s.getX() > 7 || s.getX() < 0) return false;
+
 		return (Math.abs(s.getX() - e.getX()) <= 1 && Math.abs(e.getY() - s.getY()) <= 1 && !s.equals(e));
 	}
 

@@ -12,7 +12,10 @@ public class Queen extends Piece {
 
 	@Override
 	public boolean isLegal(Board board, Cell s, Cell e) {
-		// METHOD BEING WORKED ON
+		// METHOD FINISHED
+
+		if (e.getX() > 7 || e.getX() < 0 || s.getX() > 7 || s.getX() < 0) return false;
+
 		if (s.equals(e)) return false; // same cell
 		if (e.hasPiece()) {
 			if (e.getPiece().get_isWhite() == s.getPiece().get_isWhite()) return false; // friendly fire

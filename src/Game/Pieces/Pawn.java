@@ -15,6 +15,8 @@ public class Pawn extends Piece {
         // METHOD FINISHED
         if (s.equals(e)) return false;
 
+        if (e.getX() > 7 || e.getX() < 0 || s.getX() > 7 || s.getX() < 0) return false;
+
 		if (s.getPiece().get_isWhite()) { // origin piece is white
             if (s.getY() == 6) { // pawn is on starting line
                 // legal moves include going forward once and twice
